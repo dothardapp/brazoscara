@@ -28,9 +28,9 @@ public class WinMain extends javax.swing.JFrame {
         PApplet.runSketch(args, sk);
         
         awtSurface = (PSurfaceAWT)sk.getSurface();
-        awtSurface.setSize(visorPane.getWidth(), visorPane.getHeight());
+        awtSurface.setSize(sketchPanel.getWidth(), sketchPanel.getHeight());
         smoothCanvas = (PSurfaceAWT.SmoothCanvas)awtSurface.getNative();
-        visorPane.add(smoothCanvas);        
+        sketchPanel.add(smoothCanvas);        
         sk.frame.setVisible(false);
     }
 
@@ -47,7 +47,9 @@ public class WinMain extends javax.swing.JFrame {
         btnJFileChooser = new javax.swing.JButton();
         connPane = new javax.swing.JPanel();
         ciPane = new javax.swing.JPanel();
-        visorPane = new javax.swing.JPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        sketchPanel = new javax.swing.JPanel();
+        panelPG = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -101,23 +103,37 @@ public class WinMain extends javax.swing.JFrame {
             .addGap(0, 160, Short.MAX_VALUE)
         );
 
-        visorPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Visor"));
-        visorPane.addComponentListener(new java.awt.event.ComponentAdapter() {
+        tabbedPane.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                resizePane(evt);
+                resizeVisor(evt);
             }
         });
 
-        javax.swing.GroupLayout visorPaneLayout = new javax.swing.GroupLayout(visorPane);
-        visorPane.setLayout(visorPaneLayout);
-        visorPaneLayout.setHorizontalGroup(
-            visorPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout sketchPanelLayout = new javax.swing.GroupLayout(sketchPanel);
+        sketchPanel.setLayout(sketchPanelLayout);
+        sketchPanelLayout.setHorizontalGroup(
+            sketchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 715, Short.MAX_VALUE)
         );
-        visorPaneLayout.setVerticalGroup(
-            visorPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        sketchPanelLayout.setVerticalGroup(
+            sketchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 515, Short.MAX_VALUE)
         );
+
+        tabbedPane.addTab("Visor", sketchPanel);
+
+        javax.swing.GroupLayout panelPGLayout = new javax.swing.GroupLayout(panelPG);
+        panelPG.setLayout(panelPGLayout);
+        panelPGLayout.setHorizontalGroup(
+            panelPGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 715, Short.MAX_VALUE)
+        );
+        panelPGLayout.setVerticalGroup(
+            panelPGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 515, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Algún propósito", panelPG);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -193,8 +209,8 @@ public class WinMain extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(ciPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(connPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(visorPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tabbedPane))
                     .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -209,8 +225,8 @@ public class WinMain extends javax.swing.JFrame {
                         .addComponent(connPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ciPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 166, Short.MAX_VALUE))
-                    .addComponent(visorPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tabbedPane))
                 .addContainerGap())
         );
 
@@ -221,9 +237,9 @@ public class WinMain extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void resizePane(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizePane
-        awtSurface.setSize(visorPane.getWidth(), visorPane.getHeight());
-    }//GEN-LAST:event_resizePane
+    private void resizeVisor(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_resizeVisor
+        awtSurface.setSize(sketchPanel.getWidth(), sketchPanel.getHeight());
+    }//GEN-LAST:event_resizeVisor
 
     /**
      * @param args the command line arguments
@@ -275,11 +291,13 @@ public class WinMain extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JPanel panelPG;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JPanel sketchPanel;
+    private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JToolBar toolBar;
-    private javax.swing.JPanel visorPane;
     // End of variables declaration//GEN-END:variables
 
 }
