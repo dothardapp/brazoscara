@@ -31,6 +31,8 @@ public class WinMain extends javax.swing.JFrame {
         awtSurface.setSize(visorPane.getWidth(), visorPane.getHeight());
         smoothCanvas = (PSurfaceAWT.SmoothCanvas)awtSurface.getNative();
         visorPane.add(smoothCanvas);
+        
+        sk.frame.setVisible(false);
     }
 
     /**
