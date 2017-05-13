@@ -5,7 +5,7 @@
  */
 package ar.com.scara.views;
 
-import ar.com.scara.SketchPro;
+import ar.com.scara.processing.SketchPro;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 

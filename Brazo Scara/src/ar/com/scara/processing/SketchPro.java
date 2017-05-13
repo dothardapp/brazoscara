@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ar.com.scara;
+package ar.com.scara.processing;
 
 import processing.core.PApplet;
 import processing.core.PFont;
