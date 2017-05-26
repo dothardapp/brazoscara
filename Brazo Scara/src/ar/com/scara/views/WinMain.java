@@ -6,6 +6,7 @@
 package ar.com.scara.views;
 
 import ar.com.scara.processing.SketchPro;
+import javax.swing.JOptionPane;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
@@ -75,6 +76,11 @@ public class WinMain extends javax.swing.JFrame {
         btnJFileChooser.setFocusable(false);
         btnJFileChooser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnJFileChooser.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnJFileChooser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventoTest(evt);
+            }
+        });
         toolBar.add(btnJFileChooser);
 
         connPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Conexiones"));
@@ -241,6 +247,10 @@ public class WinMain extends javax.swing.JFrame {
         awtSurface.setSize(sketchPanel.getWidth(), sketchPanel.getHeight());
     }//GEN-LAST:event_resizeVisor
 
+    private void eventoTest(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventoTest
+        JOptionPane.showMessageDialog(null, "Hola Mundo");
+    }//GEN-LAST:event_eventoTest
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +280,7 @@ public class WinMain extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new WinMain().setVisible(true);
             }
